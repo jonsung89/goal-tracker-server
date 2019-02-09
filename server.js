@@ -2,10 +2,11 @@
 
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const { PORT, MONGODB_URI } = require('./config');
+const { PORT, MONGODB_URI, CLIENT_ORIGIN } = require('./config');
 const localStrategy = require('./passport/local');
 const jwtStrategy = require('./passport/jwt');
 
@@ -18,6 +19,12 @@ const authRouter = require('./routes/auth');
 
 // Create an Express application
 const app = express();
+
+app.use(
+	cors({
+		origin: CLIENT_ORIGIN
+	})
+);
 
 // Log all requests. Skip logging during
 app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'common', {
