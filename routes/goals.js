@@ -14,6 +14,7 @@ const User = require('../models/user');
 // @desc    Tests posts route
 // @access  Public
 router.get('/test', (req, res) => res.json({ msg: 'api/goals/test public route success' }));
+// router.get('/test', (req, res) => res.json('api/goals/test public route success'));
 
 // @route   GET api/goals/:id
 // @desc    Get user's goals

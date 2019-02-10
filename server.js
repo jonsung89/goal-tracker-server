@@ -20,11 +20,18 @@ const authRouter = require('./routes/auth');
 // Create an Express application
 const app = express();
 
-app.use(
-	cors({
-		origin: CLIENT_ORIGIN
-	})
-);
+/*======CORS Middleware=====*/
+const corsOption = {
+  origin: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
+};
+app.use(cors(corsOption));
+// app.use(
+// 	cors({
+// 		origin: CLIENT_ORIGIN
+// 	})
+// );
 
 // Log all requests. Skip logging during
 app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'common', {
