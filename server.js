@@ -20,21 +20,18 @@ const authRouter = require('./routes/auth');
 // Create an Express application
 const app = express();
 
-/*======CORS Middleware=====*/
-app.use(
-	cors({
-    origin: CLIENT_ORIGIN,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
-	})
-);
-
 // Log all requests. Skip logging during
-app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'common', {
-  skip: () => process.env.NODE_ENV === 'test'
+app.use(
+  morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'common', {
+    skip: () => process.env.NODE_ENV === 'test'
 }));
 
-// Create a static webserver
-app.use(express.static('public'));
+/*======CORS Middleware=====*/
+app.use(
+  cors({
+    origin: CLIENT_ORIGIN
+  })
+);
 
 // Parse request body
 app.use(express.json());
