@@ -23,9 +23,8 @@ const app = express();
 /*======CORS Middleware=====*/
 app.use(
 	cors({
-    origin: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true
+    origin: CLIENT_ORIGIN,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
 	})
 );
 
