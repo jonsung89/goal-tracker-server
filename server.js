@@ -33,6 +33,11 @@ app.use(
   })
 );
 
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', CLIENT_ORIGIN);
+  next();
+});
+
 // Parse request body
 app.use(express.json());
 
