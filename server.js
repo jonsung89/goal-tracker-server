@@ -50,11 +50,7 @@ passport.use(jwtStrategy);
 app.use('/api/users', usersRouter);
 app.use('/api', authRouter);
 app.use('/api/goals', goalRouter);
-app.get('/api/test', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', CLIENT_ORIGIN);
-  // next();
-  res.json("Test Route Works!");
-});
+app.get('/api/test', (req, res) => res.json({msg: "Test Route Works!"}));
 
 // Custom 404 Not Found route handler
 app.use((req, res, next) => {
