@@ -10,9 +10,6 @@ const { PORT, MONGODB_URI, CLIENT_ORIGIN } = require('./config');
 const localStrategy = require('./passport/local');
 const jwtStrategy = require('./passport/jwt');
 
-// const notesRouter = require('./routes/notes');
-// const foldersRouter = require('./routes/folders');
-// const tagsRouter = require('./routes/tags');
 const goalRouter = require('./routes/goals');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
@@ -44,9 +41,6 @@ passport.use(jwtStrategy);
 // const jwtAuth = passport.authenticate('jwt', { session: false, failWithError: true });
 
 // Mount routers
-// app.use('/api/notes', jwtAuth, notesRouter);
-// app.use('/api/folders', jwtAuth, foldersRouter);
-// app.use('/api/tags', jwtAuth, tagsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api', authRouter);
 app.use('/api/goals', goalRouter);
